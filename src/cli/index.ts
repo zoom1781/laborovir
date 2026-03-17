@@ -6,6 +6,7 @@ import { registerDoctor } from './commands/doctor.js';
 import { registerSkills } from './commands/skills.js';
 import { registerMessage } from './commands/message.js';
 import { registerConfig } from './commands/config.js';
+import { registerChat } from './commands/chat.js';
 
 const program = new Command()
   .name(APP_NAME)
@@ -18,5 +19,11 @@ registerDoctor(program);
 registerSkills(program);
 registerMessage(program);
 registerConfig(program);
+registerChat(program);
 
-program.parse();
+// Default to chat TUI when no command is given
+if (process.argv.length <= 2) {
+  import('../tui/app.js').then(m => m.startTUI());
+} else {
+  program.parse();
+}
