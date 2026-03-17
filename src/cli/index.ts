@@ -7,6 +7,7 @@ import { registerSkills } from './commands/skills.js';
 import { registerMessage } from './commands/message.js';
 import { registerConfig } from './commands/config.js';
 import { registerChat } from './commands/chat.js';
+import { registerUpdate } from './commands/update.js';
 
 const program = new Command()
   .name(APP_NAME)
@@ -20,6 +21,7 @@ registerSkills(program);
 registerMessage(program);
 registerConfig(program);
 registerChat(program);
+registerUpdate(program);
 
 // Default to chat TUI when no command is given
 if (process.argv.length <= 2) {
